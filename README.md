@@ -10,7 +10,7 @@ Dieses Script ändert live per API das Wetter und die Uhrzeit auf deinem Server.
 4. Starte deinen Server neu.
 5. Nun ist das Script installiert und sollte funktionieren. Wichtig: Das Script befindet sich in der Beta-Phase, daher können Bugs und Fehler auftreten. Außerdem bedenke, dass Scripts wie Vsync und easytime nicht mit diesem Script kompatibel sind.
 
-# [EN] FiveM Live Weather and Time Script 
+# [ENG] FiveM Live Weather and Time Script 
 
 This script changes the weather and time on your server live via API. You can set a city of your choice, and the time and weather of that city will be applied to the server.
 
