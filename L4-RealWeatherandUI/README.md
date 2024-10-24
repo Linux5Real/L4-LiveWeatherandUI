@@ -1,5 +1,5 @@
 [GER] 
-L4-LiveWeatherandU Script Readme
+L4-LiveWeatherandUI Script Readme
 
 Dieses Script ändert live per API das Wetter und die Uhrzeit auf deinem Server. Du kannst eine Stadt deiner Wahl einstellen, und die Uhrzeit sowie das Wetter dieser Stadt werden dann auf dem Server übernommen. Dazu gibt es noch ein sauberes UI, das alle wichtigen Daten beinhaltet.
 
@@ -11,12 +11,12 @@ Dieses Script ändert live per API das Wetter und die Uhrzeit auf deinem Server.
 
 3. Stelle die **Config.lua** so ein, wie du sie brauchst.
 
-4. Gehe in deine `server.cfg` und füge dort **start L4-LiveWeatherandU** hinzu. Starte deinen Server neu.
+4. Gehe in deine `server.cfg` und füge dort **start L4-LiveWeatherandUI** hinzu. Starte deinen Server neu.
 
 Nun ist das Script installiert und sollte funktionieren. Wichtig: Das Script befindet sich in der Beta-Phase, daher können Bugs und Fehler auftreten. Außerdem bedenke, dass Scripts wie Vsync und easytime nicht mit diesem Script kompatibel sind.
 
 [ENG] 
-L4-LiveWeatherandU Script Readme
+L4-LiveWeatherandUI Script Readme
 
 This script changes the weather and time on your server live via API. You can set a city of your choice, and the time and weather of that city will then be applied to the server. Additionally, there is a clean UI that includes all important data.
 
@@ -28,7 +28,7 @@ This script changes the weather and time on your server live via API. You can se
 
 3. Configure the **Config.lua** as needed.
 
-4. Go to your `server.cfg` and add **start L4-LiveWeatherandU**. Restart your server.
+4. Go to your `server.cfg` and add **start L4-LiveWeatherandUI**. Restart your server.
 
 Now the script is installed and should work. Important: The script is in the beta phase, so bugs and errors may occur. Also, note that scripts like Vsync and easytime are not compatible with this script.
 
