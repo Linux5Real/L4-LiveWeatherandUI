@@ -2,6 +2,32 @@ local apiKey = Config.ApiKey
 local city = Config.City
 local url = "http://api.openweathermap.org/data/2.5/weather?q=" .. city .. "&appid=" .. apiKey .. "&units=metric"
 
+Config = Config or {}
+local configFile = LoadResourceFile(GetCurrentResourceName(), "config.lua")
+assert(load(configFile))()
+
+local function isPlayerAllowed(playerId)
+    local identifiers = GetPlayerIdentifiers(playerId)
+    for _, identifier in ipairs(identifiers) do
+        for _, allowedIdentifier in ipairs(Config.AllowedPlayers) do
+            if identifier == allowedIdentifier then
+                return true
+            end
+        end
+    end
+    return false
+end
+
+RegisterNetEvent('checkAdminPermission')
+AddEventHandler('checkAdminPermission', function()
+    local source = source
+    if isPlayerAllowed(source) then
+        TriggerClientEvent('openAdminUI', source)
+    else
+        TriggerClientEvent('noPermission', source)
+    end
+end)
+
 local lastWeather = nil
 
 function getWeather()
@@ -45,4 +71,8 @@ Citizen.CreateThread(function()
         updateTime()
         Citizen.Wait(1000)
     end
+end)
+RegisterNetEvent('saveBlackoutSettings')
+AddEventHandler('saveBlackoutSettings', function(fullBlackout)
+    TriggerClientEvent('updateBlackoutSettings', -1, fullBlackout)
 end)

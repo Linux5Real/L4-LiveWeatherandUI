@@ -1,7 +1,11 @@
+Config = Config or {}
+local configFile = LoadResourceFile(GetCurrentResourceName(), "config.lua")
+assert(load(configFile))()
+
 local currentWeather = "OVERCAST"
 local newWeather = "OVERCAST"
 local time = {hours = 12, minutes = 0, seconds = 0}
-local transitionTime = 180
+local transitionTime = 240
 local isDragging = false
 local originalPosition = {left = "0px", top = "0px"}
 
@@ -66,7 +70,7 @@ CreateThread(function()
               end
             currentWeather = newWeather
 
-            SetWeatherTypeOvertimePersist(currentWeather, 180.0)
+            SetWeatherTypeOvertimePersist(currentWeather, 240.0)
 
             Wait((transitionTime / 4) * 1000)
         end
@@ -140,7 +144,7 @@ CreateThread(function()
     end
 end)
 
-RegisterCommand('uhrzeit', function()
+RegisterCommand('time', function()
     local hours = time.hours
     local minutes = time.minutes
     local seconds = time.seconds
@@ -193,19 +197,21 @@ CreateThread(function()
         local currentDate = GetCurrentDate()
         if Config.ShowUI then
             SendNUIMessage({
-                action = "updateUI",
+                action = 'updateUI',
+                showCity = Config.ShowCity,
+                city = Config.City,
                 showTime = Config.ShowTime,
-                showWeather = Config.ShowWeather,
-                showDate = Config.ShowDate,
-                uiPosition = Config.UIPosition,
-                draggable = Config.DraggableUI,
                 time = string.format("%02d:%02d", time.hours, time.minutes),
+                showDate = Config.ShowDate,
                 date = currentDate,
-                weather = Config.WeatherTranslations[currentWeather] or currentWeather
+                showWeather = Config.ShowWeather,
+                weather = Config.WeatherTranslations[currentWeather] or currentWeather,
+                draggable = Config.DraggableUI,
+                uiPosition = Config.UIPosition
             })
         else
             SendNUIMessage({
-                action = "hideUI"
+                action = 'hideUI'
             })
         end
         Wait(1000)
@@ -216,3 +222,45 @@ function GetCurrentDate()
     local year, month, day = GetLocalTime()
     return string.format("%02d.%02d.%04d", day, month, year)
 end
+
+RegisterNetEvent('updateBlackoutSettings')
+AddEventHandler('updateBlackoutSettings', function(fullBlackout)
+    if (fullBlackout) then
+        SetArtificialLightsState(true)
+        SetArtificialLightsStateAffectsVehicles(true)
+    else
+        SetArtificialLightsState(false)
+        SetArtificialLightsStateAffectsVehicles(false)
+    end
+end)
+
+RegisterCommand('adminweatherui', function()
+    TriggerServerEvent('checkAdminPermission')
+end, false)
+
+RegisterNetEvent('openAdminUI')
+AddEventHandler('openAdminUI', function()
+    SetNuiFocus(true, true)
+    SendNUIMessage({
+        action = 'showAdminUI'
+    })
+end)
+
+RegisterNetEvent('noPermission')
+AddEventHandler('noPermission', function()
+    TriggerEvent('chat:addMessage', {
+        color = { 255, 0, 0},
+        multiline = true,
+        args = {"System", "Du hast keine Berechtigung, diesen Befehl auszuführen."}
+    })
+end)
+
+RegisterNUICallback('closeAdminUI', function(data, cb)
+    SetNuiFocus(false, false)
+    cb('ok')
+end)
+
+RegisterNUICallback('updateBlackout', function(data, cb)
+    TriggerServerEvent('saveBlackoutSettings', data.fullBlackout)
+    cb('ok')
+end)
