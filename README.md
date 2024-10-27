@@ -45,4 +45,3 @@ Now the script is installed and should work. Important: The script is in the bet
 **L4-Scripts Discord : https://discord.gg/bHDTNXDexr**
 
 **Thanks to https://github.com/zImSkillz for completing the script**
-
