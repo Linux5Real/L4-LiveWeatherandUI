@@ -13,6 +13,10 @@ Dieses Script ändert live per API das Wetter und die Uhrzeit auf deinem Server.
 
 4. Gehe in deine `server.cfg` und füge dort **start L4-LiveWeatherandUI** hinzu. Starte deinen Server neu.
 
+WICHTIG um das adminweatherUI als Admin öffnen zu können musst du in der config deine SteamID eintragen unter Config.AllowedPlayers findest du die Einstellung.
+
+Das AdminUI ingame öffnest du mit /openAdminUI
+
 Nun ist das Script installiert und sollte funktionieren. Wichtig: Das Script befindet sich in der Beta-Phase, daher können Bugs und Fehler auftreten. Außerdem bedenke, dass Scripts wie Vsync und easytime nicht mit diesem Script kompatibel sind.
 
 [ENG] 
@@ -29,6 +33,10 @@ This script changes the weather and time on your server live via API. You can se
 3. Configure the **Config.lua** as needed.
 
 4. Go to your `server.cfg` and add **start L4-LiveWeatherandUI**. Restart your server.
+
+IMPORTANT to be able to open the adminweatherUI as admin you have to enter your SteamID in the config under Config.AllowedPlayers you will find the setting.
+
+Open the AdminUI ingame with /openAdminUI
 
 Now the script is installed and should work. Important: The script is in the beta phase, so bugs and errors may occur. Also, note that scripts like Vsync and easytime are not compatible with this script.
 

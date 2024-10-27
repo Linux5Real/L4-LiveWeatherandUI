@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather UI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="ui">
+        <div id="city" class="info"></div>
+        <div id="separator" class="info">|</div>
+        <div id="time" class="info"></div>
+        <div id="separator" class="info">|</div>
+        <div id="weather" class="info">
+            <i id="weather-icon" class="fas"></i>
+            <span id="weather-text"></span>
+        </div>
+        <div id="separator" class="info">|</div>
+        <div id="date" class="info"></div>
+    </div>
+
+    <div id="admin-ui" class="hidden">
+        <h1>Admin Weather UI</h1>
+        <div class="setting">
+            <label for="full-blackout">Full Blackout:</label>
+            <label class="switch">
+                <input type="checkbox" id="full-blackout">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
