@@ -72,7 +72,43 @@ Citizen.CreateThread(function()
         Citizen.Wait(1000)
     end
 end)
+
 RegisterNetEvent('saveBlackoutSettings')
 AddEventHandler('saveBlackoutSettings', function(fullBlackout)
     TriggerClientEvent('updateBlackoutSettings', -1, fullBlackout)
 end)
+
+local currentVersion = "2.1" 
+local githubRepo = "Linux5Real/L4-LiveWeatherandUI" 
+
+function normalizeVersion(version)
+    return version:match("%d+%.%d+%.?%d*") or version
+end
+
+function checkForUpdates()
+    print("Checking for updates...") 
+    local url = "https://api.github.com/repos/" .. githubRepo .. "/releases/latest"
+    PerformHttpRequest(url, function(statusCode, response, headers)
+        if statusCode == 200 then
+            local releaseData = json.decode(response)
+            local latestVersion = normalizeVersion(releaseData.tag_name)
+            local downloadUrl = releaseData.html_url
+            if latestVersion ~= normalizeVersion(currentVersion) then
+                print("^1[UPDATE] A new version (" .. latestVersion .. ") is available! Please update your script.^0")
+                print("^1[UPDATE] Download the latest version here: " .. downloadUrl .. "^0")
+            else
+                print("^2[UPDATE] You are using the latest version (" .. currentVersion .. ").^0")
+                print("^2[UPDATE] Aktuellste Version (" .. currentVersion .. ") ist installiert.^0")
+            end
+        else
+            print("Error fetching the latest version: " .. statusCode)
+        end
+    end, "GET", "", {["Content-Type"] = "application/json"})
+end
+
+AddEventHandler('onResourceStart', function(resourceName)
+    if GetCurrentResourceName() == resourceName then
+        checkForUpdates()
+    end
+end)
+
