@@ -1,20 +1,25 @@
---If you need help or you found bugs pls report it on the discord server 
---L4-Scripts Discord here https://discord.gg/bHDTNXDexr
-
 Config = {}
 --Change API and City here if you need help read the README
 Config.ApiKey = "YOUR-API-KEY" -- your API key from openweathermap.org 
 Config.City = "Berlin" -- https://openweathermap.org Search your city and copy the name here 
 
--- Change UpdateIntervalif you need help read the README. 
+-- Change AllowedPlayers here if you need help read the README
+Config.AllowedPlayers = {
+    "license:abcdef1234567890abcdef1234567890abcdef12", -- Change me
+    "license:abcdef1234567890abcdef1234567890abcdef12"  -- Change me
+}
+
+
+-- Change UpdateInterval and TransitionTime here if you need help read the README. 
 -- The settings are still in beta, please do not change them unless you have knowledge about it.
 
-Config.UpdateInterval = 240000 -- 4 minutes in milliseconds (Beta) you have 1000 free requests per day from openweathermap.org
+Config.UpdateInterval = 360000 -- 5 minutes in milliseconds (Beta)
 
 -- Realistic NPC Spawning-Density
 Config.RealisticDensity = true -- true/false
 
 -- UI Configures
+Config.ShowCity = true-- Show the city in the WeatherUI
 Config.ShowTime = true -- Show the time in the WeatherUI
 Config.ShowWeather = true -- Show the weather in the WeatherUI
 Config.ShowDate = true -- Show the date in the WeatherUI
@@ -23,7 +28,7 @@ Config.UIPosition = 'top-left' -- Position des UI: 'top-left', 'top-right','cent
 Config.DraggableUI = true -- Enable/Disable draggable UI command is '/moveui' 
 
 -- Debug-Mode (true/false) 
-Config.Debug = false 
+Config.Debug = false
 
 -- Translations for Weather-Types 
 Config.WeatherTranslations = {
