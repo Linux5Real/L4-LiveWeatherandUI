@@ -13,7 +13,7 @@ Config.AllowedPlayers = {
 -- Change UpdateInterval and TransitionTime here if you need help read the README. 
 -- The settings are still in beta, please do not change them unless you have knowledge about it.
 
-Config.UpdateInterval = 360000 -- 5 minutes in milliseconds (Beta)
+Config.UpdateInterval = 360000 -- 5 minutes in milliseconds (Dont Change it!)
 
 -- Realistic NPC Spawning-Density
 Config.RealisticDensity = true -- true/false
