@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
-author 'Linux4real-L4-Scripts'
+author 'L4-Scripts'
 description 'L4-LiveWeatherandUI - Live Weather and Time via API, Clean UI for the Time and Weather '
 version '2.1' 
 
