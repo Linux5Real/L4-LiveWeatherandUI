@@ -78,7 +78,7 @@ AddEventHandler('saveBlackoutSettings', function(fullBlackout)
     TriggerClientEvent('updateBlackoutSettings', -1, fullBlackout)
 end)
 
-local currentVersion = "2.1" 
+local currentVersion = "2.2" 
 local githubRepo = "Linux5Real/L4-LiveWeatherandUI" 
 
 function normalizeVersion(version)
